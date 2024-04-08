@@ -1,0 +1,94 @@
+<div class="row gx-3" id="row">
+	<div class="col">
+		<div class="md">
+			<label for="patient_id" class="form-label">Student Id:</label> 
+			<input class="form-control" type="text" name = "patient_id" id="patient_id"> <br> 
+			<code class="text-danger small font-weight-bold float-right" id="id_error" style="display: none;"></code>&nbsp;
+		</div>
+
+		<div class="md">
+			<label for="patient_fname" class="form-label">First Name: </label> 
+			<input class="form-control" type="text" name="fname" id="patient_fname"> 
+			<code class="text-danger small font-weight-bold float-right" id="fname_error" style="display: none;"></code><br> <br> 
+		</div>
+
+		<div class="md">
+			<label for="patient_mname" class="form-label">Midle Name: </label> 
+			<input class="form-control" type="text" name="mname" id="patient_mname"> 
+			<code class="text-danger small font-weight-bold float-right" id="mname_error" style="display: none;"></code><br>&nbsp;
+		</div>
+
+		<div class="md">
+			<label for="patient_lname" class="form-label">Last Name: </label> 
+			<input class="form-control"  type="text" name="lname" id="patient_lname"> 
+			<code class="text-danger small font-weight-bold float-right" id="lname_error" style="display: none;"></code><br>&nbsp;
+		</div>
+
+		<div class="md">
+			<label for="patient_dept" class="form-label">Department: </label> 
+			<input class="form-control" type="text" name="dept" id="patient_dept"> 
+			<code class="text-danger small font-weight-bold float-right" id="dept_error" style="display: none;"></code><br>&nbsp;
+		</div>
+		<!--  -->
+		<div class="md">
+			<label for="patient_batch" class="form-label">Batch: </label> <!-- make drop down  or -->
+			<input class="form-control" type="number" name="batch" id="patient_batch" pattern="[0-9][0-9][0-9][0-9]"> 
+			<code class="text-danger small font-weight-bold float-right" id="batch_error" style="display: none;"></code><br>&nbsp;
+		</div>
+		</div>
+		<div class="col">
+		<div class="md">
+			<div id="sex">
+				<label for="" class="form-label">Sex: </label> 
+				<input type="radio" name="sex" value="M" id="s1">Male
+				<input type="radio" name="sex" value="F" id="s2">Female
+				<code class="text-danger small font-weight-bold float-right" id="sex_error" style="display: none;"></code><br>&nbsp;
+			</div>
+		</div>
+
+		<div class="md-4">
+			<label for="pateint_age" class="form-label">Age: </label> 
+			<input type="number" name="age" id="pateint_age" pattern="[0-9][0-9]"> 
+			<code class="text-danger small font-weight-bold float-right" id="age_error" style="display: none;"></code><br>&nbsp;
+		</div>
+
+		<div class="md-4">
+			<label for="pateint_region" class="form-label">Region: </label> 
+			<input class="form-control" type="text" name="region" id="pateint_region"> 
+			<code class="text-danger small font-weight-bold float-right" id="region_error" style="display: none;"></code><br>&nbsp;
+		</div>
+
+		<div class="md-4">
+			<label for="patient_zone" class="form-label">Zone: </label> 
+			<input class="form-control" type="text" name="zone" id="patient_zone"> 
+			<code class="text-danger small font-weight-bold float-right" id="zone_error" style="display: none;"></code><br>&nbsp;
+		</div>
+
+		<div class="md-4">
+			<label for="patient_kebele" class="form-label">Kebele: </label> 
+			<input class="form-control" type="text" name="kebele" id="patient_kebele"> 
+			<code class="text-danger small font-weight-bold float-right" id="kebele_error" style="display: none;"></code><br>&nbsp;
+		</div>
+
+		<div class="md-4">
+			<label for="phone_no" class="form-label">Phone Number: </label> 
+			<input class="form-control" type="text" name="phone_no" id="phone_no"> 
+			<code class="text-danger small font-weight-bold float-right" id="phone_no_error" style="display: none;"></code><br>&nbsp;
+		</div>
+		<!--  -->
+
+		<div class="col-md-4" class="col col-md-12" style="border: 0;">
+		  <hr class="col-md-12 float-left" style="padding: 0px; width: 95%; border-top: 2px solid  #02b6ff; border-radius: 0px;">
+		</div>
+
+		<div>
+			 &emsp;
+			<button id="register_patient" class="btn btn-primary" >Register </button><br>
+		</div>
+		&emsp;
+		<div class="text-success" id="patient_acknowledgment" style="font-family: sans-serif;">
+		</div>
+
+	</div>
+</div>
+<!-- onclick="addPatient();" -->

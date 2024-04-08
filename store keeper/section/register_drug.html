@@ -1,0 +1,68 @@
+
+<div class="container">
+			<div class="mb-2">
+				<label for="drug_name" class="form-label" style="font-size: 20px;">Drug Name: </label>
+				<input class="form-control" type="text" name="drug_name" id="drug_name" onkeyup="validateDrugName(this.value, 'drug_name_error');" pattern="[0-9][A-Z]*">
+				<code id="drug_name_error" style="display: none; font-size: 15px;"></code>
+			</div>
+			<div class="mb-2">
+				<label for="drug_qty" class="form-label" style="font-size: 20px;">Quantity </label>
+				<input class="form-control" type="number" id="drug_qty" onkeyup="validateQty(this.value, 'drug_qty_error');">
+				<code id="drug_qty_error" style="display: none; font-size: 15px;"></code>
+			</div>
+			<div class="mb-2">
+				<label for="drug_measure" class="form-label" style="font-size: 20px;">Measure </label>
+				<select class="form-select" id="drug_measure" onchange="validateMeasure(this.value, 'drug_measure_error');" onblur="validateMeasure(this.value, 'drug_measure_error');">
+					<option value="default">----select measure-----</option>
+					<option value='box'>Box</option>
+					<option value="pk">PK</option>
+					<option value='doozen'>Doozen</option>
+					<option value="tube">Tub</option>
+					<option value='roll'>Roll</option>
+					<option value="littre">Littre</option>
+				</select>
+				<code id="drug_measure_error" style="display: none; font-size: 15px;"></code>
+			</div>
+			<div class="mb-2">
+				<label for="drug_batch_no" class="form-label" style="font-size: 20px;">Batch Noumber </label>
+				<input class="form-select" type="number" id="drug_batch_no" onkeyup="validateBatchNo(this.value,'drug_batch_no_error');">
+				<code id="drug_batch_no_error" style="display: none; font-size: 15px;"></code>
+			</div>
+			<div class="mb-2">
+				<label for="drug_batch_no" class="form-label" style="font-size: 20px;">Expire Date: </label>
+				<input class="form-control" type="date" id="drug_expire_date" onblur="validateDate(this.value, 'drug_expire_date_error');">
+				<code id="drug_expire_date_error" style="display: none; font-size: 15px;"></code>
+			</div>
+			
+			<div class=" mb-2">
+				<br><button class="btn btn-success" id="add_drug">Add drug</button>
+			</div>
+
+		</div>
+
+		<div>
+			<table class="table" id="tbl">
+
+				<thead>
+					<tr>
+					<th>#</th>
+					<th>Drug Name</th>
+					<th>Quantity</th>
+					<th>Measure</th>
+					<th>Batch No</th>
+					<th>Expire Date</th>
+					<th>Action</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					
+				</tbody>
+				
+			</table>
+		</div>
+
+
+		<div class="mt-5 text-center ">
+			<button class="btn btn-success" id="register">Register </button>
+		</div>

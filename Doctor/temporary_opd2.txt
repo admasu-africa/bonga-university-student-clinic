@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Doctor | OPD2</title>
+	<!-- <link rel="stylesheet" type="text/css" href="include/style.css"> -->
+</head>
+<body>
+<?php include_once "include/header.php"; ?>
+	
+	<div class="column" style="border: 2px solid blue;">
+		<?php if(isset($_POST['what'])){
+			$pid = $_GET['id'];
+			$conn = mysqli_connect('localhost','root','','BUC');
+			$sql5 = "select * from patient_info where id = '$pid'";
+			$result1 = mysqli_query($conn, $sql5);
+			if ($result1 == true) {
+				$resultCheck1 = mysqli_num_rows($result1);
+				if ($resultCheck1 > 0) {
+					while ($row1 = mysqli_fetch_assoc($result1)) {
+						$history1 = $row1['history'];
+						$prescription1 = $row1['prescription'];
+						$lab_result1 = $row1['lab_result'];
+						echo "History: ".$history1."<br> Lab Result: ".$lab_result1."<br> Prescription: ".$prescription1."<br>";
+					}
+				}else
+					echo "No Previous History<br>";
+		}
+	}
+		 ?>
+			<?php  
+				$pid = $_GET['id'];
+				$date = date("Y/m/d");
+				$conn = mysqli_connect('localhost','root','','BUC');
+				//echo "The Id of student is: ".$pid;
+					?>
+					<form action="" method="post">
+					<button name="what" >view history</button><br>
+					Write History: <br><textarea name="history" rows="5" cols="30"></textarea> <br>
+					<div id="divlabtest">
+						<input type="button" name="labtest" value="labtest need?" onclick="labTest()"><br>		
+					
+					Lab test:<br>
+					<input type="checkbox" name="labtest[]" value="Urine">Urine
+					<input type="checkbox" name="labtest[]" value="Saliva">Saliva
+					<input type="checkbox" name="labtest[]" value="Blood">Blood
+					<input type="checkbox" name="labtest[]" value="Faeces">Faeces<br>
+					<input type="button" name="prescribe" value="Prescribe?"><br>
+					
+					</div>
+
+					Write Prescription:<br>
+					<div id="prescriptionid">
+					<textarea  cols="30" rows="5" name="Prescription"></textarea><br></div>
+					<input type="submit" name="finish" value="Finish"><br>
+					</form>
+
+					<?php 
+					// exit();
+					if (isset($_POST['finish'])) {
+						$history = $_POST['history'];
+						$pres = $_POST['Prescription'];
+						$chk = "";
+						
+						if(isset($_POST['labtest'])){
+						$chkbx = $_POST['labtest'];						
+						foreach ($chkbx as $value){
+							$chk = $chk.$value.",";
+						}
+						//$sql2 = "update patient_info set history = '$history', lab_test = '$chk', visit = 2 where id = '$pid' and visit = 1";
+						$sql2 = "insert into patient_info(id, history, visit, visited_date, lab_test) values('$pid', '$history',2, '$date', '$chk')";
+						$sql4 = "update patient set visit = 0 where id = '$pid'";
+						if(mysqli_query($conn, $sql2) && mysqli_query($conn, $sql4)){
+							header("location:view_info.php");
+						}
+						else
+							echo mysqli_error($conn);	
+					}
+
+					if ($history == "" and $pres == ""){
+						$sql5 = "update patient set visit = 0 where id = '$pid'";
+						if(mysqli_query($conn, $sql5)){							
+							header("location:view_info.php");
+						}else
+							echo mysqli_error($conn);
+					}
+				
+					if($pres != ""){
+						//$sql3 = "update patient_info set patient_info.history = '$history', patient_info.prescription = '$pres', patient_info.visit = 3 where patient_info.id = '$pid' and patient_info.visit = 1";
+						$sql3 = "insert into patient_info(id, history, visit, visited_date, prescription) values('$pid', '$history',2, '$date', '$pres')";
+						$sql4 = "update patient set visit = 0 where id = '$pid'";
+						if(mysqli_query($conn, $sql3) && mysqli_query($conn, $sql4)){
+							header("location:view_info.php");						
+						}
+						else
+							echo mysqli_error($conn);
+					}	
+									
+				}		
+			  		
+		?>
+		<script type="text/javascript">
+			function labTest(){
+				document.getElementById('divlabtest').style.display = "none";
+				// document.write("Thi is testing");
+				//document.getElementById('prescriptionid').innerHTML = "What";
+				
+			}
+		</script>
+		</div>
+	</div>
+</div>
+</body>
+</html>
